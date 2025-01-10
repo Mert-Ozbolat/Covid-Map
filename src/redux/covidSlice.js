@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getDetails } from "./actions";
 
 const initialState = {
     isLoading: true,
@@ -11,7 +12,23 @@ const covidSlice = createSlice({
     name: 'covid',
     initialState,
     reducers: {},
-    extraReducers: (builder) => { }
+    extraReducers: (builder) => {
+        builder.addCase(getDetails.pending, (state) => {
+            state.isLoading = true
+        })
+
+        builder.addCase(getDetails.rejected, (error) => {
+            state.isLoading = false
+            state.error = error.message
+        })
+
+        builder.addCase(getDetails.fulfilled, (state, { payload }) => {
+            state.isLoading = false
+            state.error = null
+            state.data = payload
+        })
+
+    }
 })
 
 export default covidSlice.reducer
