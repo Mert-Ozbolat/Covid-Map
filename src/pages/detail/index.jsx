@@ -1,8 +1,13 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const Detail = () => {
+
+    const { code } = useParams()
     return (
-        <div>Detail</div>
+        <div>
+            <h1>{code}</h1>
+        </div>
     )
 }
 
