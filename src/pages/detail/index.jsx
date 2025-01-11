@@ -7,7 +7,6 @@ import Content from './content'
 
 const Detail = () => {
 
-
     const { code } = useParams()
     const dispatch = useDispatch()
 
