@@ -17,9 +17,10 @@ const covidSlice = createSlice({
             state.isLoading = true
         })
 
-        builder.addCase(getDetails.rejected, (error) => {
+        builder.addCase(getDetails.rejected, (state, error) => {
             state.isLoading = false
             state.error = error.message
+            state.data = null
         })
 
         builder.addCase(getDetails.fulfilled, (state, { payload }) => {
@@ -27,7 +28,6 @@ const covidSlice = createSlice({
             state.error = null
             state.data = payload
         })
-
     }
 })
 
