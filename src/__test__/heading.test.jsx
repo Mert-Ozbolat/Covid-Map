@@ -37,6 +37,9 @@ it('store yükleme bittiğinde ekrana loader yoktur', () => {
     )
 
     // TODO
+    const loader = screen.queryByTestId('heading-loader')
+
+    expect(loader).toBeNull()
 })
 
 it('store veri geldiginde ekrana veriler basılır', () => {
